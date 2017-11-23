@@ -10,13 +10,8 @@ class Container extends React.Component {
     super();
     this.state = {
       todo: '',
-      todos: [
-        'Sleep',
-        'Eat',
-        'Pray',
-        'Jump'
-      ]
-    }
+      todos: ['Sleep', 'Eat', 'Pray', 'Jump']
+    };
 
     this.onChangeText = this.onChangeText.bind(this);
     this.submitTodo = this.submitTodo.bind(this);
@@ -25,9 +20,9 @@ class Container extends React.Component {
   submitTodo(event) {
     const a = this.state.todos;
     a.push(this.state.todo);
-    this.setState((prevState) => {
+    this.setState(prevState => ({
       todos: a
-    });
+    }));
   }
 
   onChangeText(event) {
@@ -43,12 +38,12 @@ class Container extends React.Component {
       <div className="main">
         <Header />
         <InputBox
-          name="todo" 
+          name="todo"
           value={this.state.todo}
           onChange={this.onChangeText}
-          className='input-box' />
-        <ListTodo
-          todos={this.state.todos} />
+          className="input-box"
+        />
+        <ListTodo todos={this.state.todos} />
         <input type="submit" onClick={this.submitTodo} value="Do Something!" />
       </div>
     );
